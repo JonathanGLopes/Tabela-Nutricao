@@ -49,3 +49,9 @@ for (let i = 0; i < pacientes.length; i++){
         tdImc.textContent = imc.toFixed(2);
     }
 }
+
+function testandoFuncao() {
+    alert("OLHA A PEDRA!!!!");
+}
+
+title.addEventListener("click", testandoFuncao);
