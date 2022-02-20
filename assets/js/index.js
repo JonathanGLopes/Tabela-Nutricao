@@ -50,8 +50,15 @@ for (let i = 0; i < pacientes.length; i++){
     }
 }
 
-function testandoFuncao() {
-    alert("OLHA A PEDRA!!!!");
-}
+/*
+    preventDefault como o próprio nome já diz previne que um componente 
+    realize seu comportamento padrão. Como por exemplo um botão, ao clicar
+    nele ao invés dele limpar a tela e enviar os dados, irá deixar de fazer isso
+    que é o comportamento padrão dele, nisso podemos configurar outro comportamento.
+*/
 
-title.addEventListener("click", testandoFuncao);
+let buttonAdd = document.querySelector("#adicionar-paciente");
+buttonAdd.addEventListener("click", function(event){
+    event.preventDefault();
+    console.log("teste");
+});
