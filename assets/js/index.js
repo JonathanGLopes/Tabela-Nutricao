@@ -1,5 +1,5 @@
 let title = document.querySelector(".main-title");
-title.textContent = "Aparecida Nutricionista";
+title.textContent = "Marcela Nutricionista";
 
 let pacientes = document.querySelectorAll(".paciente");
 
@@ -60,5 +60,33 @@ for (let i = 0; i < pacientes.length; i++){
 let buttonAdd = document.querySelector("#adicionar-paciente");
 buttonAdd.addEventListener("click", function(event){
     event.preventDefault();
-    console.log("teste");
+
+    let form = document.querySelector("#form-adiciona");
+
+let nomePaciente = form.nome.value;
+let pesoPaciente = form.peso.value;
+let alturaPaciente = form.altura.value;
+let gorduraPaciente = form.gordura.value;
+
+let pacienteTr = document.createElement("tr");
+
+let nomeTd = document.createElement("td");
+let pesoTd = document.createElement("td");
+let alturaTd = document.createElement("td");
+let gorduraTd = document.createElement("td");
+let imcTd = document.createElement("td");
+
+nomeTd.textContent = nomePaciente;
+pesoTd.textContent = pesoPaciente;
+alturaTd.textContent = alturaPaciente;
+gorduraTd.textContent = gorduraPaciente;
+
+pacienteTr.appendChild(nomeTd);
+pacienteTr.appendChild(pesoTd);
+pacienteTr.appendChild(alturaTd);
+pacienteTr.appendChild(gorduraTd);
+
+let tabela = document.querySelector("#tabela-pacientes");
+
+tabela.appendChild(pacienteTr);
 });
