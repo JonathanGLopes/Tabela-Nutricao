@@ -21,11 +21,13 @@ nomeTd.textContent = nomePaciente;
 pesoTd.textContent = pesoPaciente;
 alturaTd.textContent = alturaPaciente;
 gorduraTd.textContent = gorduraPaciente;
+imcTd.textContent = calculaImc(pesoPaciente,alturaPaciente);
 
 pacienteTr.appendChild(nomeTd);
 pacienteTr.appendChild(pesoTd);
 pacienteTr.appendChild(alturaTd);
 pacienteTr.appendChild(gorduraTd);
+pacienteTr.appendChild(imcTd);
 
 let tabela = document.querySelector("#tabela-pacientes");
 
