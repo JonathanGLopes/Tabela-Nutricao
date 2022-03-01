@@ -1,6 +1,14 @@
 let buttonAdd = document.querySelector("#adicionar-paciente");
 buttonAdd.addEventListener("click", function(event){
     event.preventDefault();
+/*
+    preventDefault como o próprio nome já diz previne que um componente 
+    realize seu comportamento padrão. Como por exemplo um botão, ao clicar
+    nele ao invés dele limpar a tela e enviar os dados, irá deixar de fazer isso
+    que é o comportamento padrão dele, nisso podemos configurar outro comportamento.
+*/
+
+
 
 let form = document.querySelector("#form-adiciona");
 //Extraindo informações do paciente do form
@@ -15,11 +23,11 @@ let alturaTd = document.createElement("td");
 let gorduraTd = document.createElement("td");
 let imcTd = document.createElement("td");
 
-nomeTd.textContent = paciente;
-pesoTd.textContent = paciente;
-alturaTd.textContent = paciente;
-gorduraTd.textContent = paciente;
-imcTd.textContent = calculaImc(form.peso.value, form.altura.value);
+nomeTd.textContent = paciente.nome;
+pesoTd.textContent = paciente.peso;
+alturaTd.textContent = paciente.altura;
+gorduraTd.textContent = paciente.gordura;
+imcTd.textContent = paciente.imc;
 
 //Adicionando paciente na tabela
 pacienteTr.appendChild(nomeTd);
@@ -34,13 +42,6 @@ tabela.appendChild(pacienteTr);
 });
 
 
-/*
-    preventDefault como o próprio nome já diz previne que um componente 
-    realize seu comportamento padrão. Como por exemplo um botão, ao clicar
-    nele ao invés dele limpar a tela e enviar os dados, irá deixar de fazer isso
-    que é o comportamento padrão dele, nisso podemos configurar outro comportamento.
-*/
-
 function obtemPacienteDoFormulario(form){
     let paciente = {
         nome: form.nome.value,
@@ -51,3 +52,10 @@ function obtemPacienteDoFormulario(form){
     }
     return paciente;
 }
+
+/*
+    Acima temos um objeto, que é uma coleção de propriedades definida como uma sintaxe.
+    Um objeto é uma forma de definir as características de uma propriedade, por exemplo:
+    um funcionário tem nome, cpf, estado civil, etc. Então criamos o objeto funcionário e damos a ele
+    todas essas características dentro do objeto.
+*/
