@@ -3,12 +3,10 @@ buttonAdd.addEventListener("click", function(event){
     event.preventDefault();
 
 let form = document.querySelector("#form-adiciona");
+//Extraindo informações do paciente do form
+let paciente = obtemPacienteDoFormulario(form);
 
-let nomePaciente = form.nome.value;
-let pesoPaciente = form.peso.value;
-let alturaPaciente = form.altura.value;
-let gorduraPaciente = form.gordura.value;
-
+// Criando a TR e TD do paciente
 let pacienteTr = document.createElement("tr");
 
 let nomeTd = document.createElement("td");
@@ -17,12 +15,13 @@ let alturaTd = document.createElement("td");
 let gorduraTd = document.createElement("td");
 let imcTd = document.createElement("td");
 
-nomeTd.textContent = nomePaciente;
-pesoTd.textContent = pesoPaciente;
-alturaTd.textContent = alturaPaciente;
-gorduraTd.textContent = gorduraPaciente;
-imcTd.textContent = calculaImc(pesoPaciente,alturaPaciente);
+nomeTd.textContent = paciente;
+pesoTd.textContent = paciente;
+alturaTd.textContent = paciente;
+gorduraTd.textContent = paciente;
+imcTd.textContent = calculaImc(form.peso.value, form.altura.value);
 
+//Adicionando paciente na tabela
 pacienteTr.appendChild(nomeTd);
 pacienteTr.appendChild(pesoTd);
 pacienteTr.appendChild(alturaTd);
@@ -42,3 +41,13 @@ tabela.appendChild(pacienteTr);
     que é o comportamento padrão dele, nisso podemos configurar outro comportamento.
 */
 
+function obtemPacienteDoFormulario(form){
+    let paciente = {
+        nome: form.nome.value,
+        peso: form.peso.value,
+        altura: form.altura.value,
+        gordura: form.gordura.value,
+        imc: calculaImc(form.peso.value, form.altura.value)
+    }
+    return paciente;
+}
