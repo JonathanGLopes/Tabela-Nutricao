@@ -8,37 +8,19 @@ buttonAdd.addEventListener("click", function(event){
     que é o comportamento padrão dele, nisso podemos configurar outro comportamento.
 */
 
+    let form = document.querySelector("#form-adiciona");
+    //Extraindo informações do paciente do form
+    let paciente = obtemPacienteDoFormulario(form);
 
+    // Criando a TR e TD do paciente
+        let pacienteTr =  montaTr(paciente);
 
-let form = document.querySelector("#form-adiciona");
-//Extraindo informações do paciente do form
-let paciente = obtemPacienteDoFormulario(form);
+    let tabela = document.querySelector("#tabela-pacientes");
 
-// Criando a TR e TD do paciente
-let pacienteTr = document.createElement("tr");
+    tabela.appendChild(pacienteTr);
 
-let nomeTd = document.createElement("td");
-let pesoTd = document.createElement("td");
-let alturaTd = document.createElement("td");
-let gorduraTd = document.createElement("td");
-let imcTd = document.createElement("td");
+    form.reset();
 
-nomeTd.textContent = paciente.nome;
-pesoTd.textContent = paciente.peso;
-alturaTd.textContent = paciente.altura;
-gorduraTd.textContent = paciente.gordura;
-imcTd.textContent = paciente.imc;
-
-//Adicionando paciente na tabela
-pacienteTr.appendChild(nomeTd);
-pacienteTr.appendChild(pesoTd);
-pacienteTr.appendChild(alturaTd);
-pacienteTr.appendChild(gorduraTd);
-pacienteTr.appendChild(imcTd);
-
-let tabela = document.querySelector("#tabela-pacientes");
-
-tabela.appendChild(pacienteTr);
 });
 
 
@@ -59,3 +41,38 @@ function obtemPacienteDoFormulario(form){
     um funcionário tem nome, cpf, estado civil, etc. Então criamos o objeto funcionário e damos a ele
     todas essas características dentro do objeto.
 */
+
+function montaTr(paciente){
+
+    let pacienteTr = document.createElement("tr");
+    pacienteTr.classList.add("paciente");
+
+    let nomeTd = montaTd(paciente.nome, "info-nome");
+    let pesoTd = montaTd(paciente.peso, "info-peso");
+    let alturaTd = montaTd(paciente.altura, "info-altura");
+    let gorduraTd = montaTd(paciente.gordura, "info-gordura");
+    let imcTd = montaTd(paciente.imc, "info-imc");
+
+    nomeTd.textContent = paciente.nome;
+    pesoTd.textContent = paciente.peso;
+    alturaTd.textContent = paciente.altura;
+    gorduraTd.textContent = paciente.gordura;
+    imcTd.textContent = paciente.imc;
+
+    //Adicionando paciente na tabela
+    pacienteTr.appendChild(nomeTd);
+    pacienteTr.appendChild(pesoTd);
+    pacienteTr.appendChild(alturaTd);
+    pacienteTr.appendChild(gorduraTd);
+    pacienteTr.appendChild(imcTd);
+
+    return pacienteTr;
+}
+
+    function montaTd(dado, classe){
+        let td = document.createElement("td");
+        td.textContent = dado;
+        td.classList.add(classe);
+
+        return td;
+}
