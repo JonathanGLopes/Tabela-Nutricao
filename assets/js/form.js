@@ -15,6 +15,11 @@ buttonAdd.addEventListener("click", function(event){
     // Criando a TR e TD do paciente
         let pacienteTr =  montaTr(paciente);
 
+    if(!validaPaciente(paciente)){
+        console.log("paciente inválido");
+        return;
+    }
+
     let tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr);
@@ -53,18 +58,12 @@ function montaTr(paciente){
     let gorduraTd = montaTd(paciente.gordura, "info-gordura");
     let imcTd = montaTd(paciente.imc, "info-imc");
 
-    nomeTd.textContent = paciente.nome;
-    pesoTd.textContent = paciente.peso;
-    alturaTd.textContent = paciente.altura;
-    gorduraTd.textContent = paciente.gordura;
-    imcTd.textContent = paciente.imc;
-
     //Adicionando paciente na tabela
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
+    pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
+    pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
+    pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
+    pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
+    pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
 
     return pacienteTr;
 }
@@ -75,4 +74,13 @@ function montaTr(paciente){
         td.classList.add(classe);
 
         return td;
+}
+
+
+function validaPaciente(paciente){
+    if (validaPeso(paciente.peso)){
+        return true;
+    }else{
+        return false;
+    }
 }
