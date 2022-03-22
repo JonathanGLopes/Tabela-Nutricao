@@ -1,12 +1,6 @@
 let buttonAdd = document.querySelector("#adicionar-paciente");
 buttonAdd.addEventListener("click", function(event){
     event.preventDefault();
-/*
-    preventDefault como o próprio nome já diz previne que um componente 
-    realize seu comportamento padrão. Como por exemplo um botão, ao clicar
-    nele ao invés dele limpar a tela e enviar os dados, irá deixar de fazer isso
-    que é o comportamento padrão dele, nisso podemos configurar outro comportamento.
-*/
 
     let form = document.querySelector("#form-adiciona");
     //Extraindo informações do paciente do form
@@ -18,8 +12,7 @@ buttonAdd.addEventListener("click", function(event){
     let erros = validaPaciente(paciente);
 
     if(erros.length > 0){
-        let mensagemErro = document.querySelector("#mensagem-erro");
-        mensagemErro.textContent = erros;
+        mensagemErro(erros);
         return;
     }
 
@@ -30,6 +23,16 @@ buttonAdd.addEventListener("click", function(event){
     form.reset();
 
 });
+
+function mensagemErro(erros){
+    let ul = document.querySelector("#mensagem-erro");
+
+    erros.forEach(function(erro){
+        let li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li); //Colocando a li dentro da ul
+    });
+}
 
 
 function obtemPacienteDoFormulario(form){
