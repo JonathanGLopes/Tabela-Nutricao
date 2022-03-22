@@ -21,11 +21,14 @@ buttonAdd.addEventListener("click", function(event){
     tabela.appendChild(pacienteTr);
 
     form.reset();
+    let mensagensErro = document.querySelector("#mensagem-erro");
+    mensagensErro.innerHTML = "";
 
 });
 
 function mensagemErro(erros){
     let ul = document.querySelector("#mensagem-erro");
+    ul.innerHTML = "";
 
     erros.forEach(function(erro){
         let li = document.createElement("li");
@@ -87,12 +90,28 @@ function validaPaciente(paciente){
 
     let erros = [];
 
+    if (paciente.nome.length == 0 ){
+        erros.push("O nome não pode ser em branco");
+    }
+
     if (!validaPeso(paciente.peso)){
         erros.push("Peso é inválido");
     }
 
     if(!validaAltura(paciente.altura)){
         erros.push("Altura é inválida");
+    }
+
+    if (paciente.altura.length == 0){
+        erros.push("A altura precisa ser preenchida");
+    }
+
+    if (paciente.peso.length == 0) {
+        erros.push("O peso precisa ser preenchido");
+    }
+
+    if (paciente.gordura.length == 0){
+        erros.push("A gordura precisa ser preenchida");
     }
 
     return erros;
