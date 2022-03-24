@@ -6,8 +6,12 @@ $tabela.addEventListener("dblclick", function(event){
     let alvoEvent = event.target;
     let = alvoPai = alvoEvent.parentNode;
 
-    alvoPai.remove();
-})
+    alvoPai.classList.add("fadeOut");
+
+    setTimeout(function(){
+        alvoPai.remove();
+    }, 500);
+});
 
 
 
