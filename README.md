@@ -1,6 +1,6 @@
 # Tabela-Nutricao
 
-<h1> Objetivo </h1>
+<h2> Objetivo </h2>
 
  - Praticar fundamentos em JavaScript
  - Reforçar utilização de eventos
