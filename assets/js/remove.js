@@ -11,13 +11,12 @@ $tabela.addEventListener("dblclick", function(event){
     setTimeout(function(){
         alvoPai.remove();
     }, 500);
+
+    /*
+        O comando acima configura o tempo para uma certa ação ser realizada, no caso a remoção.
+        Isso como o nome diz, ela seta um tempo pra esse comando ser executado!
+    */
 });
-
-
-
-
-
-
 
 
 
