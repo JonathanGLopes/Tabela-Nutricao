@@ -8,8 +8,9 @@ $filtro.addEventListener("input", function(){
             let paciente = pacientes[i];
             let tdNome = paciente.querySelector(".info-nome");
             let nome = tdNome.textContent;
-    
-            if(nome != this.value){
+            let expressao = new RegExp(this.value,"i");
+
+            if(!expressao.test(nome)){
                 paciente.classList.add("invisivel");
             } else{
                 paciente.classList.remove("invisivel");
